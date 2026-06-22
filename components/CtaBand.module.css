@@ -1,0 +1,60 @@
+.band {
+  background: var(--bg-2);
+  border-block: 1px solid var(--line-soft);
+  position: relative; overflow: hidden;
+}
+.inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; position: relative; z-index: 1; }
+.band h2 { font-size: var(--t-h2); max-width: none; text-wrap: balance; }
+
+@media (min-width: 821px) {
+  .inner { min-height: clamp(440px, 52vw, 660px); align-content: center; }
+  .inner > div { padding-right: clamp(230px, 27vw, 380px); }
+}
+
+/* bold half-disc CTA hugging the right edge of the band */
+.arc {
+  position: absolute; top: 50%; right: 0; transform: translateY(-50%);
+  height: clamp(360px, 44vw, 560px); aspect-ratio: 1 / 2;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 9999px 0 0 9999px;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding-right: clamp(1.4rem, 3vw, 3rem);
+  text-align: right;
+  transition: transform .55s var(--ease), background .4s var(--ease);
+  z-index: 2;
+}
+.arc::after {
+  content: ""; position: absolute; inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid color-mix(in oklch, var(--accent-ink) 22%, transparent);
+  opacity: 0; transform: scale(1);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  pointer-events: none;
+}
+.arc:hover { transform: translateY(-50%) scale(1.04); background: var(--accent-deep); }
+.arc:hover::after { opacity: 0.4; transform: scale(1.1); }
+.arc:active { transform: translateY(-50%) scale(1.01); }
+.arcInner { display: flex; flex-direction: column; align-items: flex-end; gap: 0.7rem; }
+.arcArrow { display: block; transition: transform .5s var(--ease); }
+.arcArrow svg { display: block; width: clamp(40px, 5vw, 56px); height: auto; transition: stroke-width .4s var(--ease); }
+.arc:hover .arcArrow { transform: translateX(6px); }
+.arc:hover .arcArrow svg { stroke-width: 3.6; }
+.arcLabel { font-size: 1rem; font-weight: 500; letter-spacing: 0.01em; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .arc, .arc::after, .arcArrow { transition: none; } }
+
+/* mobile: arc becomes a full-width pill under the text */
+@media (max-width: 820px) {
+  .band { overflow: visible; }
+  .arc {
+    position: static; transform: none; height: auto; aspect-ratio: auto;
+    border-radius: 100px; width: calc(100% - 2 * var(--gut)); max-width: none;
+    margin: 0 var(--gut) clamp(1.6rem, 5vw, 2.4rem);
+    padding: 1.15em 1.8em;
+    box-shadow: 0 10px 30px -10px color-mix(in oklch, var(--accent) 70%, transparent);
+  }
+  .arc:hover, .arc:active { transform: translateY(-3px); }
+  .arc::after { display: none; }
+  .arcInner { flex-direction: row-reverse; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; }
+  .arcArrow svg { width: 24px; }
+  .arcLabel { max-width: none; font-size: 1.12rem; font-weight: 700; }
+}
