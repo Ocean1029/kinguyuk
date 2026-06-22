@@ -72,52 +72,51 @@ export default function Header({ lang, items, onHome }: Props) {
           <span className={styles.markCn}>璟昱</span>
         </Link>
 
-        <nav
-          className={`${styles.nav}${menuOpen ? ` ${styles.open}` : ""}`}
-          aria-label="Primary"
-        >
-          {items.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              className={item.id === currentFromPath(pathname) ? styles.isCurrent : undefined}
-              aria-current={item.id === currentFromPath(pathname) ? "page" : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className={`${styles.menuPanel}${menuOpen ? ` ${styles.open}` : ""}`}>
+          <nav className={styles.nav} aria-label="Primary">
+            {items.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                className={item.id === currentFromPath(pathname) ? styles.isCurrent : undefined}
+                aria-current={item.id === currentFromPath(pathname) ? "page" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className={styles.controls}>
-          <div className={styles.langToggle} role="group" aria-label="Language">
-            <span
-              className={styles.langPill}
-              aria-hidden="true"
-              style={{ transform: `translateX(${pill.left}px)`, width: pill.width }}
-            />
-            <Link ref={enRef} href={enHref} className={lang === "en" ? styles.active : undefined}>
-              EN
-            </Link>
-            <Link ref={zhRef} href={zhHref} className={lang === "zh" ? styles.active : undefined}>
-              中文
-            </Link>
+          <div className={styles.controls}>
+            <div className={styles.langToggle} role="group" aria-label="Language">
+              <span
+                className={styles.langPill}
+                aria-hidden="true"
+                style={{ transform: `translateX(${pill.left}px)`, width: pill.width }}
+              />
+              <Link ref={enRef} href={enHref} className={lang === "en" ? styles.active : undefined}>
+                EN
+              </Link>
+              <Link ref={zhRef} href={zhHref} className={lang === "zh" ? styles.active : undefined}>
+                中文
+              </Link>
+            </div>
+
+            <button className={`${styles.iconBtn} ${styles.themeToggle}`} onClick={toggleTheme} aria-label="Toggle dark / light">
+              <Sun className={styles.sun} size={18} strokeWidth={1.8} />
+              <Moon className={styles.moon} size={18} strokeWidth={1.8} />
+            </button>
           </div>
-
-          <button className={`${styles.iconBtn} ${styles.themeToggle}`} onClick={toggleTheme} aria-label="Toggle dark / light">
-            <Sun className={styles.sun} size={18} strokeWidth={1.8} />
-            <Moon className={styles.moon} size={18} strokeWidth={1.8} />
-          </button>
-
-          <button
-            className={`${styles.iconBtn} ${styles.menuBtn}`}
-            aria-label="Menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <Menu size={18} strokeWidth={1.8} />
-          </button>
         </div>
+
+        <button
+          className={`${styles.iconBtn} ${styles.menuBtn}`}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <Menu size={18} strokeWidth={1.8} />
+        </button>
       </div>
     </header>
   );

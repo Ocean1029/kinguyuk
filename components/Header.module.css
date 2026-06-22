@@ -33,6 +33,7 @@
 .nav a.isCurrent { color: var(--text); }
 .nav a.isCurrent::after { transform: scaleX(1); }
 
+.menuPanel { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); }
 .controls { display: flex; align-items: center; gap: 0.5rem; }
 
 /* segmented language toggle */
@@ -71,9 +72,9 @@
 
 .menuBtn { display: none; }
 
-/* mobile nav */
+/* mobile nav: collapse links + language + theme controls into the dropdown */
 @media (max-width: 1000px) {
-  .nav {
+  .menuPanel {
     position: fixed; inset: 74px 0 auto 0;
     flex-direction: column; align-items: stretch;
     background: color-mix(in oklch, var(--bg) 96%, transparent);
@@ -84,8 +85,10 @@
     transform: translateY(-12px); opacity: 0; pointer-events: none;
     transition: opacity .3s var(--ease), transform .3s var(--ease);
   }
-  .nav.open { transform: none; opacity: 1; pointer-events: auto; }
+  .menuPanel.open { transform: none; opacity: 1; pointer-events: auto; }
+  .nav { flex-direction: column; align-items: stretch; gap: 0; }
   .nav a { padding-block: 0.9em; font-size: 1.05rem; border-bottom: 1px solid var(--line-soft); }
   .nav a::after { display: none; }
+  .controls { justify-content: center; gap: 1rem; padding-top: 1.3rem; }
   .menuBtn { display: grid; }
 }
