@@ -6,7 +6,7 @@
 .root {
   display: flex; flex-direction: column;
   gap: clamp(0.8rem, 1.5vw, 1.2rem);
-  margin-inline: calc(-1 * var(--gut));
+  /* break out of .wrap max-width for a true full-bleed row (centered) */
   width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
 }
 .tile {

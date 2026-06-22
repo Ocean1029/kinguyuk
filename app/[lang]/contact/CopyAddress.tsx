@@ -26,17 +26,18 @@ export default function CopyAddress({ address, copyLabel, copiedLabel }: Props) 
   return (
     <p className={styles.mapAddr}>
       <MapPin size={18} strokeWidth={1.7} />
-      <span className={styles.mapAddrText}>{address}</span>
-      <button
-        type="button"
-        className={`${styles.copyBtn}${copied ? ` ${styles.copied}` : ""}`}
-        onClick={copy}
-        aria-label={copied ? copiedLabel : copyLabel}
-        title={copied ? copiedLabel : copyLabel}
-      >
-        {copied ? <Check size={16} strokeWidth={2.2} /> : <Copy size={16} strokeWidth={1.8} />}
-        <span className={styles.copyText}>{copied ? copiedLabel : copyLabel}</span>
-      </button>
+      <span className={styles.mapAddrText}>
+        {address}
+        <button
+          type="button"
+          className={`${styles.copyBtn}${copied ? ` ${styles.copied}` : ""}`}
+          onClick={copy}
+          aria-label={copied ? copiedLabel : copyLabel}
+          title={copied ? copiedLabel : copyLabel}
+        >
+          {copied ? <Check size={16} strokeWidth={2.2} /> : <Copy size={16} strokeWidth={1.8} />}
+        </button>
+      </span>
     </p>
   );
 }
