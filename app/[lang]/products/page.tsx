@@ -38,10 +38,10 @@ export default async function ProductsPage({
 
       <CtaBand
         lang={lang}
-        eyebrowKey="cs.eyebrow"
         labelKey="nav.odm"
         href={localePath(lang, "/odm")}
         ariaLabel={t("nav.odm")}
+        imageSrc="/uploads/phone-cases.png"
       />
     </main>
   );

@@ -97,6 +97,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 /* ---------- LAYOUT PRIMITIVES ---------- */
 .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gut); }
 .section { padding-block: var(--section-y); }
+html.snap-page { scroll-snap-type: y proximity; scroll-padding-top: 74px; }
 
 .eyebrow {
   font-family: var(--font-mono);
@@ -247,6 +248,7 @@ html.reveal-static .ann path { stroke-dashoffset: 0 !important; transition: none
 .reveal[data-d="3"] { transition-delay: .24s; }
 .reveal[data-d="4"] { transition-delay: .32s; }
 .reveal[data-d="5"] { transition-delay: .40s; }
+.reveal[data-d="long"] { transition-delay: .7s; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .scale-beam, .scale-pan { transition: none; }

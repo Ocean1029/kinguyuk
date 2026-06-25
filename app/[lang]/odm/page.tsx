@@ -132,10 +132,10 @@ export default async function OdmPage({
 
       <CtaBand
         lang={lang}
-        eyebrowKey="nav.contact"
         labelKey="cta.talk"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.talk")}
+        imageSrc="/uploads/phone-cases.png"
       />
     </main>
   );

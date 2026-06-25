@@ -1,5 +1,9 @@
 /* ---------- HERO ---------- */
-.hero { position: relative; padding-top: clamp(2.5rem, 5vw, 4.5rem); padding-bottom: var(--section-y); }
+.hero { position: relative; padding-block: clamp(2.5rem, 5vw, 4.5rem); min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
+
+.statsSection { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; padding-block: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--line-soft); }
+
+.snapSec { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
 .heroGrid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -18,11 +22,16 @@
 
 .heroVisual { position: relative; }
 .heroVisual :global(.ph) { aspect-ratio: 4 / 5; }
+.heroImgWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+}
+.heroImg { object-fit: cover; object-position: center; }
 
 .statsTitle {
-  margin-top: clamp(3rem, 6vw, 5rem);
-  padding-top: clamp(2rem, 3vw, 2.6rem);
-  border-top: 1px solid var(--line-soft);
   font-size: clamp(1.3rem, 1rem + 1.1vw, 1.9rem);
   font-weight: 700; letter-spacing: -0.01em;
   text-align: center;

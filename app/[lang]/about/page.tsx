@@ -4,6 +4,7 @@ import { localePath } from "@/lib/nav";
 import { TEAM, CULTURE, tl } from "@/lib/content";
 import CtaBand from "@/components/CtaBand";
 import AboutSubnav from "./AboutSubnav";
+import ScrollSnapPage from "@/components/ScrollSnapPage";
 import styles from "./about.module.css";
 
 export async function generateMetadata({
@@ -27,6 +28,7 @@ export default async function AboutPage({
 
   return (
     <main id="top">
+      <ScrollSnapPage />
       {/* ===== MISSION ===== */}
       <section className={`section wrap ${styles.mission}`}>
         <span className="eyebrow reveal">{t("ab.eyebrow")}</span>
@@ -216,10 +218,11 @@ export default async function AboutPage({
 
       <CtaBand
         lang={lang}
-        eyebrowKey="nav.contact"
         labelKey="cta.talk"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.talk")}
+        imageSrc="/uploads/phone-cases.png"
+        snap
       />
     </main>
   );

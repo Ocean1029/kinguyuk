@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { createTranslator, getDictionary, isLang, type Lang } from "@/lib/dictionary";
 import CtaBand from "@/components/CtaBand";
+import ScrollSnapPage from "@/components/ScrollSnapPage";
 import { localePath } from "@/lib/nav";
 import styles from "./home.module.css";
 
@@ -27,6 +28,7 @@ export default async function HomePage({
 
   return (
     <main id="top">
+      <ScrollSnapPage />
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} wrap`}>
         <div className={styles.heroGrid}>
@@ -39,17 +41,24 @@ export default async function HomePage({
           </div>
 
           <div className={`${styles.heroVisual} reveal`} data-d="2">
-            <div className="ph">
-              <span className="ph-label">
-                <span>{t("hero.ph")}</span>
-                <span className="dim">{t("hero.ph.dim")}</span>
-              </span>
+            <div className={styles.heroImgWrap}>
+              <Image
+                className={styles.heroImg}
+                src="/assets/home-page/2.png"
+                alt={t("hero.ph")}
+                fill
+                sizes="(max-width: 880px) 100vw, 45vw"
+                priority
+              />
             </div>
           </div>
         </div>
+      </section>
 
-        <h2 className={`${styles.statsTitle} reveal`}>{t("hero.statsTitle")}</h2>
-        <div className={`${styles.stats} reveal`}>
+      {/* ===== STATS ===== */}
+      <section className={`${styles.statsSection} wrap`}>
+        <h2 className={`${styles.statsTitle} reveal`} data-d="long">{t("hero.statsTitle")}</h2>
+        <div className={`${styles.stats} reveal`} data-d="long">
           <div className={styles.stat}>
             <div className={styles.num}>
               <span>{t("hero.stat1.num")}</span>
@@ -75,7 +84,7 @@ export default async function HomePage({
       </section>
 
       {/* ===== CAPABILITIES ===== */}
-      <section className="section wrap" id="capabilities">
+      <section className={`section wrap ${styles.snapSec}`} id="capabilities">
         <div className={styles.sectionHead}>
           <span className="eyebrow reveal">{t("cap.eyebrow")}</span>
           <h2 className="reveal" data-d="1">{t("cap.h2")}</h2>
@@ -231,7 +240,7 @@ export default async function HomePage({
       </section>
 
       {/* ===== PRODUCTS ===== */}
-      <section className="section wrap" id="products">
+      <section className={`section wrap ${styles.snapSec}`} id="products">
         <div className={styles.prodHead}>
           <div>
             <span className="eyebrow reveal">{t("prod.eyebrow")}</span>
@@ -261,8 +270,14 @@ export default async function HomePage({
           </Link>
 
           <Link className={`${styles.tile} ${styles.tileIpad} reveal`} href={localePath(lang, "/products")} aria-label={t("prod2.title")}>
-            <div className={styles.tilePhBlank}>
-              <span className="ph-label"><span>{t("prod2.ph")}</span><span className="dim">4:5</span></span>
+            <div className={styles.tileImgWrap}>
+              <Image
+                className={styles.tileImg}
+                src="/assets/home-page/1.png"
+                alt={t("prod2.title")}
+                fill
+                sizes="(max-width: 720px) 100vw, 60vw"
+              />
             </div>
             <div className={styles.tileContent}>
               <h3 className={styles.tileName}>{t("prod2.title")}</h3>
@@ -274,8 +289,14 @@ export default async function HomePage({
           </Link>
 
           <Link className={`${styles.tile} ${styles.tileMacbook} reveal`} href={localePath(lang, "/products")} aria-label={t("prod3.title")}>
-            <div className={styles.tilePhBlank}>
-              <span className="ph-label"><span>{t("prod3.ph")}</span><span className="dim">4:5</span></span>
+            <div className={styles.tileImgWrap}>
+              <Image
+                className={styles.tileImg}
+                src="/assets/home-page/4.png"
+                alt={t("prod3.title")}
+                fill
+                sizes="(max-width: 720px) 100vw, 60vw"
+              />
             </div>
             <div className={styles.tileContent}>
               <h3 className={styles.tileName}>{t("prod3.title")}</h3>
@@ -294,10 +315,11 @@ export default async function HomePage({
 
       <CtaBand
         lang={lang}
-        eyebrowKey="nav.contact"
         labelKey="cta.sample"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.sample")}
+        imageSrc="/uploads/phone-cases.png"
+        snap
       />
     </main>
   );

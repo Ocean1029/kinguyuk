@@ -4,6 +4,7 @@ import { NAV, navHref } from "@/lib/nav";
 import Header, { type HeaderItem } from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveals from "@/components/ScrollReveals";
+import ScrollToTop from "@/components/ScrollToTop";
 import HtmlLangSync from "@/components/HtmlLangSync";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function LangLayout({
       <Header lang={lang} items={items} onHome={false} />
       {children}
       <Footer lang={lang} />
+      <ScrollToTop />
       <ScrollReveals />
     </div>
   );
