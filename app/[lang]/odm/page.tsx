@@ -135,7 +135,6 @@ export default async function OdmPage({
         labelKey="cta.talk"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.talk")}
-        imageSrc="/uploads/phone-cases.png"
       />
     </main>
   );

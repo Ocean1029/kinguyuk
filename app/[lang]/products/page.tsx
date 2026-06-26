@@ -41,7 +41,6 @@ export default async function ProductsPage({
         labelKey="nav.odm"
         href={localePath(lang, "/odm")}
         ariaLabel={t("nav.odm")}
-        imageSrc="/uploads/phone-cases.png"
       />
     </main>
   );

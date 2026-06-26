@@ -8,7 +8,7 @@ type Props = {
   labelKey: DictKey;
   href: string;
   ariaLabel: string;
-  imageSrc: string;
+  imageSrc?: string;
   snap?: boolean;
 };
 
@@ -16,14 +16,12 @@ export default function CtaBand({ lang, labelKey, href, ariaLabel, imageSrc, sna
   const t = createTranslator(lang);
   return (
     <section className={`${styles.band}${snap ? ` ${styles.bandSnap}` : ""}`}>
-      <Image
-        src={imageSrc}
-        alt=""
-        fill
-        className={styles.bg}
-        sizes="100vw"
-      />
-      <div className={styles.overlay} aria-hidden="true" />
+      {imageSrc && (
+        <>
+          <Image src={imageSrc} alt="" fill className={styles.bg} sizes="100vw" />
+          <div className={styles.overlay} aria-hidden="true" />
+        </>
+      )}
       <Link className={styles.pill} href={href} aria-label={ariaLabel}>
         <span className={styles.pillLabel}>{t(labelKey)}</span>
         <span className={styles.pillArrow} aria-hidden="true">
