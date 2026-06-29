@@ -47,6 +47,11 @@ export default async function IpadPage({
             priority
           />
         </div>
+        <div className={styles.heroText}>
+          <span className={styles.heroEyebrow}>{t("ipad.eyebrow")}</span>
+          <h1 className={styles.heroH}>{t("ipad.headline")}</h1>
+          <p className={styles.heroSub}>{t("ipad.sub")}</p>
+        </div>
       </section>
 
       <CtaBand

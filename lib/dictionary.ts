@@ -92,6 +92,10 @@ export const dictionaries = {
     "prod3.t3": "Precision fit",
     "prod3.ph": "MacBook sleeve + shell",
 
+    "ipad.eyebrow": "iPad Cases",
+    "ipad.headline": "Light enough to forget, tough enough to remember.",
+    "ipad.sub": "Featherweight folios at ~200 g — engineered around the device, not bolted onto it.",
+
     "pp.eyebrow": "Products",
     "pp.h2": "Few things, made exactly right.",
     "pp.lead": "Phone, iPad and MacBook cases \u2014 shown the way they're meant to be felt, not listed out as a spec sheet.",
@@ -316,6 +320,10 @@ export const dictionaries = {
     "prod3.t2": "散热底面",
     "prod3.t3": "精准贴合",
     "prod3.ph": "MacBook 内胆 + 硬壳",
+
+    "ipad.eyebrow": "iPad 保护套",
+    "ipad.headline": "轻到忘记它在，强到让你安心。",
+    "ipad.sub": "约 200 克的轻量折套——为设备量身打造，而非外挂附件。",
 
     "pp.eyebrow": "产品系列",
     "pp.h2": "少而精，每一件都做到位。",

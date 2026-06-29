@@ -32,3 +32,38 @@
 .productImg {
   object-fit: contain;
 }
+
+/* ---------- HERO TEXT ---------- */
+.heroText {
+  position: absolute;
+  bottom: clamp(4rem, 12dvh, 10rem);
+  left: clamp(1.5rem, 6vw, 5rem);
+  z-index: 2;
+  max-width: 36rem;
+}
+
+.heroEyebrow {
+  display: block;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fg-2);
+  margin-bottom: 0.6em;
+}
+
+.heroH {
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--fg-1);
+  white-space: nowrap;
+  margin: 0 0 0.5em;
+}
+
+.heroSub {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: 0;
+}
