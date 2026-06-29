@@ -1,9 +1,9 @@
 /* ---------- HERO ---------- */
-.hero { position: relative; padding-block: clamp(2.5rem, 5vw, 4.5rem); min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
+.hero { position: relative; padding-block: clamp(2.5rem, 5vw, 4.5rem); min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; }
 
-.statsSection { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; padding-block: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--line-soft); }
+.statsSection { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--line-soft); }
 
-.snapSec { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; }
+.snapSec { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; }
 .heroGrid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;

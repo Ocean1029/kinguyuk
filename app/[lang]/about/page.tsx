@@ -221,7 +221,6 @@ export default async function AboutPage({
         labelKey="cta.talk"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.talk")}
-        imageSrc="/uploads/phone-cases.png"
         snap
       />
     </main>

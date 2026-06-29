@@ -54,7 +54,7 @@ export default async function IpadPage({
         labelKey="cta.sample"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.sample")}
-        imageSrc="/uploads/phone-cases.png"
+        snap
       />
     </main>
   );

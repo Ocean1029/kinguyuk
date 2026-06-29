@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { createTranslator, getDictionary, isLang, type Lang } from "@/lib/dictionary";
 import CtaBand from "@/components/CtaBand";
-import ScrollSnapPage from "@/components/ScrollSnapPage";
 import { localePath } from "@/lib/nav";
 import styles from "./home.module.css";
 
@@ -28,7 +27,6 @@ export default async function HomePage({
 
   return (
     <main id="top">
-      <ScrollSnapPage />
       {/* ===== HERO ===== */}
       <section className={`${styles.hero} wrap`}>
         <div className={styles.heroGrid}>
@@ -318,7 +316,6 @@ export default async function HomePage({
         labelKey="cta.sample"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.sample")}
-        imageSrc="/uploads/phone-cases.png"
         snap
       />
     </main>
