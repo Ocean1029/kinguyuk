@@ -17,54 +17,80 @@
   font-size: clamp(1.3rem, 2.8vw, 2rem);
   font-weight: 400; line-height: 1.04; letter-spacing: -0.01em;
   text-align: center; width: 100%;
-  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
+  margin-bottom: clamp(0.6rem, 1.2vw, 1rem);
 }
 .tileIdx {
   position: absolute; right: clamp(1.4rem, 3vw, 2.6rem); bottom: clamp(1rem, 2vw, 1.8rem);
   font-family: var(--font-mono); font-size: var(--t-mono); letter-spacing: 0.18em; opacity: 0.5;
 }
 
-/* per-category gradients */
-:global([data-theme="dark"]) .phone   { background: linear-gradient(to bottom, oklch(0.24 0.058 42)  0%, oklch(0.40 0.052 52)  100%); }
-:global([data-theme="dark"]) .ipad    { background: linear-gradient(to bottom, oklch(0.20 0.060 162) 0%, oklch(0.36 0.055 162) 100%); }
-:global([data-theme="dark"]) .macbook { background: linear-gradient(to bottom, oklch(0.20 0.042 255) 0%, oklch(0.35 0.038 240) 100%); }
-:global([data-theme="light"]) .phone   { background: linear-gradient(to bottom, oklch(0.74 0.065 42)  0%, oklch(0.96 0.038 72)  100%); }
-:global([data-theme="light"]) .ipad    { background: linear-gradient(to bottom, oklch(0.72 0.068 162) 0%, oklch(0.94 0.042 155) 100%); }
-:global([data-theme="light"]) .macbook { background: linear-gradient(to bottom, oklch(0.71 0.048 255) 0%, oklch(0.93 0.028 248) 100%); }
+/* per-category backgrounds */
+.phone, .ipad, .macbook { background: transparent; }
+.macbook .pcardPh { aspect-ratio: 4 / 3; }
+
+/* wood shelf behind cards */
+.shelf {
+  position: relative;
+}
+.shelf::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(0.55rem + 2rem);
+  height: 50px;
+  background: url('/assets/Image_20260629160948_18_20.png') center bottom / 100% auto no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
 
 /* pcards inside a tile */
 .pcardGrid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: clamp(0.6rem, 1vw, 0.9rem);
+  display: grid; grid-auto-flow: column;
+  grid-auto-columns: calc((100% - clamp(1rem, 2vw, 1.6rem) * 2) / 3);
+  gap: clamp(1rem, 2vw, 1.6rem);
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
-@media (max-width: 720px) { .pcardGrid { grid-template-columns: repeat(2, 1fr); } }
+.pcardGrid::-webkit-scrollbar { display: none; }
+.pcardGrid > * { scroll-snap-align: start; }
+@media (max-width: 720px) {
+  .pcardGrid { grid-auto-columns: calc((100% - clamp(1rem, 2vw, 1.6rem)) / 2); }
+}
+.dots {
+  display: flex; justify-content: center; align-items: center; gap: 8px;
+  padding-top: clamp(1.4rem, 2.5vw, 2rem);
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; opacity: 0.25;
+}
+.dotBar {
+  height: 7px; border-radius: 3.5px;
+  background: currentColor; opacity: 0.7;
+}
+
 .pcard {
   text-align: left; background: none; border: none; padding: 0; color: inherit;
-  display: flex; flex-direction: column; gap: 1rem; cursor: pointer; width: 100%;
+  display: flex; flex-direction: column; gap: 0.55rem; cursor: pointer; width: 100%;
+  position: relative; z-index: 1;
 }
 .pcardPh {
   aspect-ratio: 4 / 5;
-  background: color-mix(in oklch, currentColor 8%, transparent);
-  border: 1px solid color-mix(in oklch, currentColor 14%, transparent);
+  overflow: hidden;
+  background: transparent;
+  border: none;
   border-radius: 4px;
   transition: transform .5s var(--ease), border-color .5s var(--ease), background .5s var(--ease);
 }
 .pcard:hover .pcardPh {
   transform: translateY(-4px);
-  background: color-mix(in oklch, currentColor 13%, transparent);
-  border-color: color-mix(in oklch, currentColor 28%, transparent);
+  background: transparent;
+  border-color: transparent;
 }
 .pcardPh :global(.ph-label) { color: color-mix(in oklch, currentColor 60%, transparent); }
-.pcardView {
-  position: absolute; left: 50%; bottom: 14px; transform: translate(-50%, 6px);
-  z-index: 3; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent-ink);
-  background: var(--accent); padding: 0.5em 0.9em; border-radius: 100px;
-  display: inline-flex; align-items: center; gap: 0.45em;
-  opacity: 0; transition: opacity .4s var(--ease), transform .4s var(--ease); pointer-events: none;
-}
-.pcard:hover .pcardView, .pcard:focus-visible .pcardView { opacity: 1; transform: translate(-50%, 0); }
-.pcardMeta { display: flex; flex-direction: column; gap: 0.35rem; }
+.pcardView { display: none; }
+.pcardMeta { display: flex; flex-direction: column; gap: 0.35rem; text-align: center; align-items: center; }
 .pcardName { font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em; }
 .pcardTag { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: color-mix(in oklch, currentColor 50%, transparent); }
 .pcard:focus-visible { outline: none; }

@@ -27,12 +27,6 @@ export default async function ProductsPage({
   return (
     <main id="top">
       <section className="section wrap" id="products">
-        <div className={styles.showcaseIntro}>
-          <span className="eyebrow reveal">{t("pp.eyebrow")}</span>
-          <h1 className="reveal" data-d="1">{t("pp.h2")}</h1>
-          <p className="lead reveal" data-d="2">{t("pp.lead")}</p>
-        </div>
-
         <ProductsShowcase lang={lang} />
       </section>
 

@@ -316,6 +316,7 @@ export default async function HomePage({
         labelKey="cta.sample"
         href={localePath(lang, "/contact")}
         ariaLabel={t("cta.sample")}
+        imageSrc="/assets/home-page/5.png"
         snap
       />
     </main>

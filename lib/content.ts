@@ -41,6 +41,7 @@ export type ProductItem = {
   name: string;
   tag: L;
   blurb: L;
+  image?: string;
   specs: Partial<Record<SpecKey, L>>;
 };
 
@@ -65,6 +66,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "meridian",
         name: "Meridian",
+        image: "/assets/璟昱产品/A01-鹰隼壳/外觀圖/紫色.png",
         tag: { en: "Full-grain leather", zh: "全粒面真皮" },
         blurb: {
           en: "Vegetable-tanned hide that deepens with the light it catches.",
@@ -82,6 +84,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "halden",
         name: "Halden",
+        image: "/assets/璟昱产品/A05-多功能腕带手机壳/外觀圖/橘色.png",
         tag: { en: "Nubuck suede", zh: "磨砂绒面" },
         blurb: { en: "A brushed nap that asks to be held.", zh: "细绒手感，让人忍不住握在掌心。" },
         specs: {
@@ -96,6 +99,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "arc",
         name: "Arc",
+        image: "/assets/璟昱产品/肤感360支架壳(简肤精孔)/外觀圖/肤感360支架壳(简肤精孔)-1.png",
         tag: { en: "Liquid silicone", zh: "液态硅胶" },
         blurb: { en: "Soft-touch that shrugs off a whole day's smudges.", zh: "亲肤手感，一整天也不留指痕。" },
         specs: {
@@ -110,6 +114,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "folio",
         name: "Folio",
+        image: "/assets/璟昱产品/K01-二合一卡包保护壳/外觀圖/蓝.png",
         tag: { en: "Leather + card", zh: "真皮 · 卡槽" },
         blurb: { en: "One card, kept exactly where your hand already is.", zh: "一张卡，正好收在掌心顺手之处。" },
         specs: {
@@ -119,6 +124,81 @@ export const PRODUCTS: ProductCategory[] = [
           cutout: { en: "±0.1 mm", zh: "±0.1mm" },
           charging: { en: "MagSafe-compatible (cards out) · 15W", zh: "兼容 MagSafe（取卡后）· 15W" },
           compat: { en: "iPhone 15 / 16 · Pro · Pro Max", zh: "iPhone 15 / 16 · Pro · Pro Max" },
+        },
+      },
+      {
+        id: "band",
+        name: "Band",
+        image: "/assets/璟昱产品/A02-diy表带手机壳/外觀圖/换接腕带壳-新版-蓝色.png",
+        tag: { en: "Wristband case", zh: "腕带支架壳" },
+        blurb: { en: "A strap that clips on, a kickstand that clicks out.", zh: "腕带一扣即合，支架一拨即出。" },
+        specs: {
+          material: { en: "Frosted PC + flexible TPU strap", zh: "磨砂 PC + 弹性 TPU 腕带" },
+          construction: { en: "Modular strap system · integrated kickstand", zh: "模块化腕带系统 · 一体式支架" },
+          weight: { en: "42 g", zh: "42 克" },
+          cutout: { en: "±0.1 mm", zh: "±0.1mm" },
+          charging: { en: "MagSafe · 15W", zh: "MagSafe · 15W" },
+          compat: { en: "iPhone 15 / 16 series", zh: "iPhone 15 / 16 系列" },
+        },
+      },
+      {
+        id: "aero",
+        name: "Aero",
+        image: "/assets/璟昱产品/A06-超薄PP手机壳/外觀圖/橘色.png",
+        tag: { en: "Ultra-thin PP", zh: "超薄 PP" },
+        blurb: { en: "Barely there — 0.4 mm between you and the aluminium.", zh: "几乎无感——仅 0.4mm 隔在你与铝壳之间。" },
+        specs: {
+          material: { en: "Polypropylene · 0.4 mm wall", zh: "聚丙烯 · 0.4mm 壁厚" },
+          construction: { en: "Single-piece moulding · anti-fingerprint coating", zh: "一体成型 · 抗指纹涂层" },
+          weight: { en: "12 g", zh: "12 克" },
+          cutout: { en: "±0.1 mm", zh: "±0.1mm" },
+          charging: { en: "MagSafe-compatible · up to 15W", zh: "兼容 MagSafe · 最高 15W" },
+          compat: { en: "iPhone 15 / 16 · Pro · Pro Max", zh: "iPhone 15 / 16 · Pro · Pro Max" },
+        },
+      },
+      {
+        id: "prism",
+        name: "Prism",
+        image: "/assets/璟昱产品/支架保护手机壳(透彩渐变)/外觀圖/2.png",
+        tag: { en: "Gradient translucent", zh: "透彩渐变" },
+        blurb: { en: "Colour that shifts as the light moves across the room.", zh: "色彩随光线穿过房间而流转。" },
+        specs: {
+          material: { en: "Translucent PC with gradient tint", zh: "透明 PC + 渐变色层" },
+          construction: { en: "Dual-shot moulding · MagSafe ring · integrated kickstand", zh: "双色注塑 · MagSafe 磁环 · 一体式支架" },
+          weight: { en: "34 g", zh: "34 克" },
+          cutout: { en: "±0.1 mm", zh: "±0.1mm" },
+          charging: { en: "MagSafe · 15W", zh: "MagSafe · 15W" },
+          compat: { en: "iPhone 15 / 16 series", zh: "iPhone 15 / 16 系列" },
+        },
+      },
+      {
+        id: "loop",
+        name: "Loop",
+        image: "/assets/璟昱产品/果冻支架腕带保护壳/外觀圖/果冻壳-20260522-11.png",
+        tag: { en: "Jelly + ring grip", zh: "果冻 · 指环" },
+        blurb: { en: "Soft enough to squeeze, with a ring that keeps it close.", zh: "软到想捏，指环又让它离不开掌心。" },
+        specs: {
+          material: { en: "Soft TPU jelly body · alloy ring grip", zh: "柔软 TPU 果冻壳体 · 合金指环" },
+          construction: { en: "Single-piece moulding · retractable ring stand", zh: "一体成型 · 可收纳指环支架" },
+          weight: { en: "36 g", zh: "36 克" },
+          cutout: { en: "±0.1 mm", zh: "±0.1mm" },
+          charging: { en: "MagSafe · 15W", zh: "MagSafe · 15W" },
+          compat: { en: "iPhone 15 / 16 series", zh: "iPhone 15 / 16 系列" },
+        },
+      },
+      {
+        id: "terra",
+        name: "Terra",
+        image: "/assets/璟昱产品/支架保护手机壳(实色)/外觀圖/1.png",
+        tag: { en: "Solid colour kickstand", zh: "实色支架壳" },
+        blurb: { en: "One colour, clean through — nothing to chip, nothing to fade.", zh: "通体一色——不会掉漆，不会褪色。" },
+        specs: {
+          material: { en: "Tinted PC body · clear bumper frame", zh: "彩色 PC 壳体 · 透明边框" },
+          construction: { en: "Dual-shot moulding · hidden kickstand · MagSafe ring", zh: "双色注塑 · 隐藏式支架 · MagSafe 磁环" },
+          weight: { en: "33 g", zh: "33 克" },
+          cutout: { en: "±0.1 mm", zh: "±0.1mm" },
+          charging: { en: "MagSafe · 15W", zh: "MagSafe · 15W" },
+          compat: { en: "iPhone 15 / 16 series", zh: "iPhone 15 / 16 系列" },
         },
       },
     ],
@@ -135,6 +215,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "atlas",
         name: "Atlas",
+        image: "/assets/璟昱产品/KY-A1-iPad妙控键盘适配壳/外觀圖/ipad-皮革0000.png",
         tag: { en: "Leather + alloy", zh: "真皮 · 铝合金" },
         blurb: { en: "A desk that folds down to the size of the screen.", zh: "一张能折到屏幕大小的桌面。" },
         specs: {
@@ -149,6 +230,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "plein",
         name: "Plein",
+        image: "/assets/璟昱产品/066-IPAD超轻!超薄双面皮套/外觀圖/白色.png",
         tag: { en: "Full-grain leather", zh: "全粒面真皮" },
         blurb: { en: "It closes with a sound you'll quietly come to like.", zh: "合盖那一声轻响，会让人悄悄上瘾。" },
         specs: {
@@ -163,6 +245,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "loom",
         name: "Loom",
+        image: "/assets/璟昱产品/KY-Apro/外觀圖/蓝色.png",
         tag: { en: "Woven textile", zh: "再生织物" },
         blurb: { en: "A textile that holds its shape and keeps its color.", zh: "一种能定型、也守得住色彩的织物。" },
         specs: {
@@ -177,6 +260,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "sketch",
         name: "Sketch",
+        image: "/assets/璟昱产品/066-IPAD超轻!超薄双面皮套/外觀圖/橙色.png",
         tag: { en: "Saffiano leather", zh: "十字纹真皮" },
         blurb: { en: "Built around the Pencil, not in spite of it.", zh: "为 Pencil 而生，而非将就。" },
         specs: {
@@ -202,6 +286,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "skin",
         name: "Skin",
+        image: "/assets/璟昱产品/MacBook Neo 高透款/外觀圖/13寸Macbook neo电脑壳渲染图-20260415-1.343.png",
         tag: { en: "Polycarbonate", zh: "聚碳酸酯" },
         blurb: { en: "A second surface, just 1.3 mm thin.", zh: "第二层表面，仅 1.3mm 之薄。" },
         specs: {
@@ -215,6 +300,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "carry",
         name: "Carry",
+        image: "/assets/璟昱产品/MacBook Neo 贴布款/外觀圖/贴布-1、.364.png",
         tag: { en: "Full-grain leather", zh: "全粒面真皮" },
         blurb: { en: "Slides in as if it were always part of the bag.", zh: "滑入包中，仿佛本就是包的一部分。" },
         specs: {
@@ -227,6 +313,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "vellum",
         name: "Vellum",
+        image: "/assets/璟昱产品/MacBook Neo 磨砂款/外觀圖/黑.png",
         tag: { en: "Wool felt", zh: "羊毛毡" },
         blurb: { en: "Dense merino felt that holds a clean, square edge.", zh: "致密美利奴羊毛毡，棱角干净利落。" },
         specs: {
@@ -234,6 +321,34 @@ export const PRODUCTS: ProductCategory[] = [
           construction: { en: "Heat-pressed edge · hidden magnetic closure", zh: "热压封边 · 隐藏式磁吸开合" },
           weight: { en: "140 g", zh: "140 克" },
           compat: { en: "13″ / 14″ / 15″", zh: "13″ / 14″ / 15″" },
+        },
+      },
+      {
+        id: "duet",
+        name: "Duet",
+        image: "/assets/璟昱产品/MacBook Neo 双色壳/外觀圖/蓝.png",
+        tag: { en: "Dual-colour PC", zh: "双色聚碳酸酯" },
+        blurb: { en: "Two tones, one shell — the frame draws the line.", zh: "双色一壳——边框勾勒出分界。" },
+        specs: {
+          material: { en: "Clear polycarbonate body · coloured bumper frame", zh: "透明聚碳酸酯壳体 · 彩色边框" },
+          construction: { en: "Snap-on two-piece · dual-colour injection", zh: "上下扣合两件式 · 双色注塑" },
+          weight: { en: "160 g (13″)", zh: "160 克（13″）" },
+          cutout: { en: "±0.1 mm · ports, hinge & vents", zh: "±0.1mm · 接口、转轴与散热孔" },
+          compat: { en: "MacBook Air / Pro · 13″–16″", zh: "MacBook Air / Pro · 13″–16″" },
+        },
+      },
+      {
+        id: "prop",
+        name: "Prop",
+        image: "/assets/璟昱产品/MacBook Neo 贴布(支架)款/外觀圖/黑色.png",
+        tag: { en: "Textile + kickstand", zh: "织物 · 支架" },
+        blurb: { en: "Fabric-wrapped, with flip-out feet for a better typing angle.", zh: "织物包覆，翻折支脚带来更舒适的打字角度。" },
+        specs: {
+          material: { en: "Woven textile over a hardshell base", zh: "编织面料 + 硬壳底座" },
+          construction: { en: "Snap-on · bonded textile · integrated flip-out kickstand", zh: "扣合式 · 贴合织物 · 一体式翻折支架" },
+          weight: { en: "195 g (13″)", zh: "195 克（13″）" },
+          cutout: { en: "±0.1 mm · ports, hinge & vents", zh: "±0.1mm · 接口、转轴与散热孔" },
+          compat: { en: "MacBook Air / Pro · 13″–16″", zh: "MacBook Air / Pro · 13″–16″" },
         },
       },
     ],

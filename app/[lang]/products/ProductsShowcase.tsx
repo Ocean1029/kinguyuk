@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { X } from "lucide-react";
 import type { Lang } from "@/lib/dictionary";
 import {
@@ -27,6 +28,8 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
   const [open, setOpen] = useState<OpenRef>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
+  const gridRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [dots, setDots] = useState<Record<string, Set<number>>>({});
 
   const close = useCallback(() => {
     setOpen(null);
@@ -48,6 +51,49 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
     };
   }, [open, close]);
 
+  const computeDots = useCallback((key: string) => {
+    const el = gridRefs.current[key];
+    if (!el) return;
+    const { scrollLeft, clientWidth, scrollWidth } = el;
+    if (scrollWidth <= clientWidth + 1 || el.children.length < 2) {
+      setDots((prev) => {
+        if (!(key in prev)) return prev;
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+      return;
+    }
+    const total = el.children.length;
+    const stride = (el.children[1] as HTMLElement).offsetLeft - (el.children[0] as HTMLElement).offsetLeft;
+    const visibleCount = Math.min(Math.round(clientWidth / stride), total);
+    const firstVisible = Math.min(Math.round(scrollLeft / stride), total - visibleCount);
+    const visible = new Set<number>();
+    for (let i = firstVisible; i < firstVisible + visibleCount; i++) visible.add(i);
+    setDots((prev) => {
+      const existing = prev[key];
+      if (existing && existing.size === visible.size && [...visible].every((v) => existing.has(v)))
+        return prev;
+      return { ...prev, [key]: visible };
+    });
+  }, []);
+
+  useEffect(() => {
+    const cleanups: (() => void)[] = [];
+    PRODUCTS.forEach((cat) => {
+      const el = gridRefs.current[cat.key];
+      if (!el) return;
+      computeDots(cat.key);
+      const onScroll = () => computeDots(cat.key);
+      el.addEventListener("scroll", onScroll, { passive: true });
+      cleanups.push(() => el.removeEventListener("scroll", onScroll));
+    });
+    const onResize = () => PRODUCTS.forEach((cat) => computeDots(cat.key));
+    window.addEventListener("resize", onResize);
+    cleanups.push(() => window.removeEventListener("resize", onResize));
+    return () => cleanups.forEach((fn) => fn());
+  }, [computeDots]);
+
   function openItem(cat: ProductCategory, item: ProductItem, trigger: HTMLElement) {
     lastFocus.current = trigger;
     setOpen({ cat, item });
@@ -59,18 +105,29 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
         {PRODUCTS.map((cat) => (
           <div key={cat.key} className={`${styles.tile} ${CAT_CLASS[cat.key]} reveal`}>
             <h2 className={styles.tileName}>{tl(cat.name, lang)}</h2>
-            <div className={styles.pcardGrid}>
+            <div className={styles.shelf}>
+            <div ref={(el) => { gridRefs.current[cat.key] = el; }} className={styles.pcardGrid}>
               {cat.items.map((item) => (
                 <button
                   key={item.id}
                   className={styles.pcard}
                   onClick={(e) => openItem(cat, item, e.currentTarget)}
                 >
-                  <div className={`ph ${styles.pcardPh}`} style={{ position: "relative" }}>
-                    <span className="ph-label">
-                      <span>{item.name}</span>
-                      <span className="dim">{tl(item.tag, lang)}</span>
-                    </span>
+                  <div className={styles.pcardPh} style={{ position: "relative" }}>
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 720px) 50vw, 25vw"
+                        style={{ objectFit: "cover" }}
+                      />
+                    ) : (
+                      <span className="ph-label">
+                        <span>{item.name}</span>
+                        <span className="dim">{tl(item.tag, lang)}</span>
+                      </span>
+                    )}
                     <span className={styles.pcardView}>{tl(LABELS.view, lang)}</span>
                   </div>
                   <div className={styles.pcardMeta}>
@@ -80,6 +137,28 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
                 </button>
               ))}
             </div>
+            </div>
+            {dots[cat.key] && (
+              <div className={styles.dots}>
+                {(() => {
+                  const vis = dots[cat.key];
+                  const segs: React.ReactNode[] = [];
+                  let i = 0;
+                  while (i < cat.items.length) {
+                    if (vis.has(i)) {
+                      let count = 0;
+                      const start = i;
+                      while (i < cat.items.length && vis.has(i)) { count++; i++; }
+                      segs.push(<span key={start} className={styles.dotBar} style={{ width: count * 15 - 8 }} />);
+                    } else {
+                      segs.push(<span key={i} className={styles.dot} />);
+                      i++;
+                    }
+                  }
+                  return segs;
+                })()}
+              </div>
+            )}
             <span className={styles.tileIdx}>{cat.idx}</span>
           </div>
         ))}
@@ -97,11 +176,21 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
             </button>
             <div className={styles.inner}>
               <div className={styles.media}>
-                <div className="ph">
-                  <span className="ph-label">
-                    <span>{open.item.name}</span>
-                    <span className="dim">{tl(open.item.tag, lang)}</span>
-                  </span>
+                <div className="ph" style={{ position: "relative" }}>
+                  {open.item.image ? (
+                    <Image
+                      src={open.item.image}
+                      alt={open.item.name}
+                      fill
+                      sizes="(max-width: 760px) 100vw, 45vw"
+                      style={{ objectFit: "cover" }}
+                    />
+                  ) : (
+                    <span className="ph-label">
+                      <span>{open.item.name}</span>
+                      <span className="dim">{tl(open.item.tag, lang)}</span>
+                    </span>
+                  )}
                 </div>
               </div>
               <div className={styles.body}>
