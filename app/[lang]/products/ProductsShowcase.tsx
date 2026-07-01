@@ -119,6 +119,7 @@ export default function ProductsShowcase({ lang }: { lang: Lang }) {
                         src={item.image}
                         alt={item.name}
                         fill
+                        unoptimized
                         sizes="(max-width: 720px) 50vw, 25vw"
                         style={{ objectFit: "cover" }}
                       />
