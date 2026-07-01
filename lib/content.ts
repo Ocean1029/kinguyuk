@@ -66,7 +66,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "meridian",
         name: "Meridian",
-        image: "/assets/璟昱产品/A01-鹰隼壳/外觀圖/紫色.png",
+        image: "/assets/products/meridian.png",
         tag: { en: "Full-grain leather", zh: "全粒面真皮" },
         blurb: {
           en: "Vegetable-tanned hide that deepens with the light it catches.",
@@ -286,7 +286,7 @@ export const PRODUCTS: ProductCategory[] = [
       {
         id: "skin",
         name: "Skin",
-        image: "/assets/璟昱产品/MacBook Neo 高透款/外觀圖/13寸Macbook neo电脑壳渲染图-20260415-1.343.png",
+        image: "/assets/璟昱产品/MacBook Neo 高透款/外觀圖/13寸Macbook-neo电脑壳渲染图-20260415-1.343.png",
         tag: { en: "Polycarbonate", zh: "聚碳酸酯" },
         blurb: { en: "A second surface, just 1.3 mm thin.", zh: "第二层表面，仅 1.3mm 之薄。" },
         specs: {
